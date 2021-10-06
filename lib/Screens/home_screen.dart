@@ -88,88 +88,92 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SizedBox(
-        width: double.infinity,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                children: [
-                  Container(
-                    child: Image(
-                      image: const AssetImage('assets/images/police_logo.png'),
-                      height: 250,
+      body: SafeArea(
+        child: SizedBox(
+          width: double.infinity,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  children: [
+                    Container(
+                      child: Image(
+                        image:
+                            const AssetImage('assets/images/police_logo.png'),
+                        height: 250,
+                      ),
                     ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.all(20),
-                    child: Text(
-                      'SRILANKA POLICE DEPARTMENT',
-                      style: TextStyle(fontSize: 20),
+                    Padding(
+                      padding: EdgeInsets.all(20),
+                      child: Text(
+                        'SRILANKA POLICE DEPARTMENT',
+                        style: TextStyle(fontSize: 20),
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-            Column(
-              children: [
-                SizedBox(
-                  width: MediaQuery.of(context).size.width / 1.5,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 8),
-                    child: Text(
-                      'Long press to send emergency message with your location',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Colors.grey,
+              Column(
+                children: [
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 1.5,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 8),
+                      child: Text(
+                        'Long press to send emergency message with your location',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: Colors.grey,
+                        ),
                       ),
                     ),
                   ),
-                ),
-                Container(
-                  width: 200,
-                  height: 200,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(5),
-                    color: isGettingLocation ? Colors.green : Colors.red,
-                  ),
-                  child: isGettingLocation
-                      ? const Center(
-                          child: Text(
-                            'SENDING',
-                            style: TextStyle(fontSize: 25),
+                  Container(
+                    width: 200,
+                    height: 200,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(5),
+                      color: isGettingLocation ? Colors.green : Colors.red,
+                    ),
+                    child: isGettingLocation
+                        ? const Center(
+                            child: Text(
+                              'SENDING',
+                              style: TextStyle(fontSize: 25),
+                            ),
+                          )
+                        : ElevatedButton(
+                            onPressed: _onSinglePressEmergency,
+                            onLongPress: _onLongPressEmergency,
+                            child: const Text('EMERGENCY'),
+                            style: ElevatedButton.styleFrom(
+                                elevation: 8.0,
+                                primary: Colors.red,
+                                shadowColor: Colors.black,
+                                textStyle: const TextStyle(fontSize: 25),
+                                padding: const EdgeInsets.symmetric(
+                                    vertical: 10, horizontal: 20)),
                           ),
-                        )
-                      : ElevatedButton(
-                          onPressed: _onSinglePressEmergency,
-                          onLongPress: _onLongPressEmergency,
-                          child: const Text('EMERGENCY'),
-                          style: ElevatedButton.styleFrom(
-                              elevation: 8.0,
-                              primary: Colors.red,
-                              shadowColor: Colors.black,
-                              textStyle: const TextStyle(fontSize: 25),
-                              padding: const EdgeInsets.symmetric(
-                                  vertical: 10, horizontal: 20)),
-                        ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    notifyLongPressText,
-                    style: TextStyle(color: notifyLongPressColor, fontSize: 25),
                   ),
-                )
-              ],
-            ),
-            TextButton(
-              onPressed: () => {Navigator.pushNamed(context, "/1")},
-              child: const Text('Go to Dashboard'),
-            )
-          ],
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      notifyLongPressText,
+                      style:
+                          TextStyle(color: notifyLongPressColor, fontSize: 25),
+                    ),
+                  )
+                ],
+              ),
+              TextButton(
+                onPressed: () => {Navigator.pushNamed(context, "/1")},
+                child: const Text('Go to Dashboard'),
+              )
+            ],
+          ),
         ),
       ),
     );

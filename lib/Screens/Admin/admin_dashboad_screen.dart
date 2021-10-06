@@ -16,156 +16,159 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          Container(
-            margin: EdgeInsets.all(20),
-            child: const Center(
-              child: Text(
-                'EMERGENCY CASES',
-                style: TextStyle(fontSize: 25),
+    return SafeArea(
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            Container(
+              margin: EdgeInsets.all(20),
+              child: const Center(
+                child: Text(
+                  'EMERGENCY CASES',
+                  style: TextStyle(fontSize: 25),
+                ),
               ),
             ),
-          ),
-          Container(
-            height: MediaQuery.of(context).size.height,
-            margin: EdgeInsets.all(15),
-            child: Column(
-              children: [
-                Container(
-                  decoration:
-                      BoxDecoration(border: Border.all(color: Colors.white)),
-                  child: Row(
-                    children: [
-                      Expanded(
-                          child: Container(
-                        height: 64,
-                        child: const Align(
-                            alignment: Alignment.center,
-                            child: Text(
-                              "",
-                              style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            )),
-                      )),
-                      Expanded(
-                          child: Container(
-                        height: 64,
-                        child: const Align(
-                            alignment: Alignment.center,
-                            child: Text(
-                              "NAME",
-                              style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            )),
-                      )),
-                      Expanded(
-                          child: Container(
-                        height: 64,
-                        child: const Align(
-                            alignment: Alignment.center,
-                            child: Text(
-                              "DATE",
-                              style: TextStyle(
-                                  fontSize: 18, fontWeight: FontWeight.bold),
-                            )),
-                      )),
-                      Expanded(
-                          child: Container(
-                        height: 64,
-                        child: const Align(
-                            alignment: Alignment.center,
-                            child: Text(
-                              'TIME',
-                              style: TextStyle(
-                                  fontSize: 18, fontWeight: FontWeight.bold),
-                            )),
-                      )),
-                    ],
+            Container(
+              height: MediaQuery.of(context).size.height,
+              margin: EdgeInsets.all(15),
+              child: Column(
+                children: [
+                  Container(
+                    decoration:
+                        BoxDecoration(border: Border.all(color: Colors.white)),
+                    child: Row(
+                      children: [
+                        Expanded(
+                            child: Container(
+                          height: 64,
+                          child: const Align(
+                              alignment: Alignment.center,
+                              child: Text(
+                                "",
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              )),
+                        )),
+                        Expanded(
+                            child: Container(
+                          height: 64,
+                          child: const Align(
+                              alignment: Alignment.center,
+                              child: Text(
+                                "NAME",
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              )),
+                        )),
+                        Expanded(
+                            child: Container(
+                          height: 64,
+                          child: const Align(
+                              alignment: Alignment.center,
+                              child: Text(
+                                "DATE",
+                                style: TextStyle(
+                                    fontSize: 18, fontWeight: FontWeight.bold),
+                              )),
+                        )),
+                        Expanded(
+                            child: Container(
+                          height: 64,
+                          child: const Align(
+                              alignment: Alignment.center,
+                              child: Text(
+                                'TIME',
+                                style: TextStyle(
+                                    fontSize: 18, fontWeight: FontWeight.bold),
+                              )),
+                        )),
+                      ],
+                    ),
                   ),
-                ),
-                ListView.builder(
-                  physics: ClampingScrollPhysics(),
-                  padding: EdgeInsets.zero,
-                  scrollDirection: Axis.vertical,
-                  shrinkWrap: true,
-                  itemCount: emergencyCases.length,
-                  itemBuilder: (context, index) {
-                    return Container(
-                      decoration:
-                          BoxDecoration(border: Border.all(color: Colors.grey)),
-                      child: GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => CaseDetailScreen(
-                                      emergencyDetail: emergencyCases[index],
-                                    )),
-                          );
-                        },
-                        child: Row(
-                          children: [
-                            Expanded(
-                                child: Container(
-                              height: 64,
-                              child: Align(
-                                  alignment: Alignment.center,
-                                  child: CircleAvatar(
-                                      foregroundImage: NetworkImage(
-                                          emergencyCases[index]
-                                              .user
-                                              .imageUrl))),
-                            )),
-                            Expanded(
-                                child: Container(
-                              height: 64,
-                              color: emergencyCases[index].isSolved
-                                  ? containerColorSolved
-                                  : containerColorUnSolved,
-                              child: Align(
-                                  alignment: Alignment.center,
-                                  child: Text(emergencyCases[index].user.name)),
-                            )),
-                            Expanded(
-                              child: Container(
-                                  height: 64,
-                                  color: emergencyCases[index].isSolved
-                                      ? containerColorSolved
-                                      : containerColorUnSolved,
-                                  child: Align(
+                  ListView.builder(
+                    physics: ClampingScrollPhysics(),
+                    padding: EdgeInsets.zero,
+                    scrollDirection: Axis.vertical,
+                    shrinkWrap: true,
+                    itemCount: emergencyCases.length,
+                    itemBuilder: (context, index) {
+                      return Container(
+                        decoration: BoxDecoration(
+                            border: Border.all(color: Colors.grey)),
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => CaseDetailScreen(
+                                        emergencyDetail: emergencyCases[index],
+                                      )),
+                            );
+                          },
+                          child: Row(
+                            children: [
+                              Expanded(
+                                  child: Container(
+                                height: 64,
+                                child: Align(
                                     alignment: Alignment.center,
-                                    child: Text(DateFormat('yyyy-MM-dd')
-                                        .format(emergencyCases[index].time)),
-                                  )),
-                            ),
-                            Expanded(
+                                    child: CircleAvatar(
+                                        foregroundImage: NetworkImage(
+                                            emergencyCases[index]
+                                                .user
+                                                .imageUrl))),
+                              )),
+                              Expanded(
+                                  child: Container(
+                                height: 64,
+                                color: emergencyCases[index].isSolved
+                                    ? containerColorSolved
+                                    : containerColorUnSolved,
+                                child: Align(
+                                    alignment: Alignment.center,
+                                    child:
+                                        Text(emergencyCases[index].user.name)),
+                              )),
+                              Expanded(
                                 child: Container(
-                              height: 64,
-                              color: emergencyCases[index].isSolved
-                                  ? containerColorSolved
-                                  : containerColorUnSolved,
-                              child: Align(
-                                alignment: Alignment.center,
-                                child: Text(DateFormat('hh:mm aa')
-                                    .format(emergencyCases[index].time)),
+                                    height: 64,
+                                    color: emergencyCases[index].isSolved
+                                        ? containerColorSolved
+                                        : containerColorUnSolved,
+                                    child: Align(
+                                      alignment: Alignment.center,
+                                      child: Text(DateFormat('yyyy-MM-dd')
+                                          .format(emergencyCases[index].time)),
+                                    )),
                               ),
-                            )),
-                          ],
+                              Expanded(
+                                  child: Container(
+                                height: 64,
+                                color: emergencyCases[index].isSolved
+                                    ? containerColorSolved
+                                    : containerColorUnSolved,
+                                child: Align(
+                                  alignment: Alignment.center,
+                                  child: Text(DateFormat('hh:mm aa')
+                                      .format(emergencyCases[index].time)),
+                                ),
+                              )),
+                            ],
+                          ),
                         ),
-                      ),
-                    );
-                  },
-                ),
-              ],
+                      );
+                    },
+                  ),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

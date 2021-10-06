@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:women_safety_app/Screens/Admin/admin_dashboad_screen.dart';
 import 'package:women_safety_app/Screens/Admin/admin_screen.dart';
 import 'package:women_safety_app/Screens/Admin/case_details.dart';
+import 'package:women_safety_app/Screens/Auth/login_screen.dart';
 import 'package:women_safety_app/Screens/home_screen.dart';
 
 void main() {
@@ -31,11 +32,12 @@ class MyApp extends StatelessWidget {
           // Notice that the counter didn't reset back to zero; the application
           // is not restarted.
         ),
-        initialRoute: '/4',
+        initialRoute: '/5',
         routes: {
           '/1': (context) => const AdminScreen(),
           '/2': (context) => AdminDashboardScreen(),
           '/4': (context) => const HomeScreen(),
+          '/5': (context) => LoginScreen(),
         });
   }
 }
