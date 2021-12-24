@@ -5,11 +5,11 @@ List<User> users = [
       id: '1',
       name: 'Sara',
       nic: '968954595V',
-      phoneNumber: '0775648951',
+      phoneNumber: '0766268519',
       imageUrl:
-          'https://images.unsplash.com/photo-1623091411395-09e79fdbfcf3?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aW5kaWFuJTIwZ2lybHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80',
-      email: 'sara123@gmail.com',
-      address: "No 32, K.K.S Road, Jaffna."),
+          'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1471&q=80',
+      email: 'thusatharan27@gmail.com',
+      address: "Kumulamunai, Mulliyawalai, Mullaitivu."),
   User(
       id: '2',
       name: 'Priyanka',

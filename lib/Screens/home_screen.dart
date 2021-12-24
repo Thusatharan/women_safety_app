@@ -13,7 +13,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  DateTime timeNow = DateTime.now();
+  // DateTime timeNow = DateTime.now();
   late double longitude;
   late double latitude;
 
@@ -60,7 +60,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
     final newEmergencyMsg = Emergency(
       user: currentuUser,
-      time: timeNow,
+      time: DateTime.now(),
       isSolved: false,
       locationData: _locationData,
     );
@@ -170,7 +170,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               TextButton(
                 onPressed: () => {Navigator.pushNamed(context, "/1")},
-                child: const Text('Go to Dashboard'),
+                child: const Icon(Icons.dashboard),
               )
             ],
           ),

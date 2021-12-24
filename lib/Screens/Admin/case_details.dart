@@ -4,6 +4,9 @@ import 'package:women_safety_app/Model/emergency_model.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:women_safety_app/Screens/Admin/map_large_screen.dart';
 
+import 'admin_dashboad_screen.dart';
+import 'admin_screen.dart';
+
 class CaseDetailScreen extends StatefulWidget {
   final Emergency emergencyDetail;
   const CaseDetailScreen({Key? key, required this.emergencyDetail})
@@ -157,7 +160,7 @@ class _CaseDetailScreenState extends State<CaseDetailScreen> {
                                       builder: (context) => MapLargeScreen(
                                           widget.emergencyDetail)));
                             },
-                            mapType: MapType.normal,
+                            mapType: MapType.satellite,
                             markers: Set.from(allMarkers),
                             onMapCreated: (GoogleMapController controller) {
                               setState(() {
@@ -192,6 +195,46 @@ class _CaseDetailScreenState extends State<CaseDetailScreen> {
                   )
                 ],
               ),
+            ),
+            Container(
+              padding: EdgeInsets.all(10),
+              width: double.infinity,
+              margin: EdgeInsets.only(bottom: 20),
+              child: widget.emergencyDetail.isSolved
+                  ? ElevatedButton(
+                      onPressed: () {},
+                      onLongPress: () {},
+                      child: const Text('SOLVED'),
+                      style: ElevatedButton.styleFrom(
+                          elevation: 8.0,
+                          primary: Colors.grey,
+                          shadowColor: Colors.black,
+                          textStyle: const TextStyle(fontSize: 20),
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 10, horizontal: 20)),
+                    )
+                  : ElevatedButton(
+                      onPressed: () {
+                        setState(() {
+                          widget.emergencyDetail.isSolved = true;
+                          print(widget.emergencyDetail.isSolved);
+                        });
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => AdminScreen()),
+                        );
+                      },
+                      onLongPress: () {},
+                      child: const Text('MARK AS SOLVED'),
+                      style: ElevatedButton.styleFrom(
+                          elevation: 8.0,
+                          primary: Colors.red,
+                          shadowColor: Colors.black,
+                          textStyle: const TextStyle(fontSize: 20),
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 10, horizontal: 20)),
+                    ),
             ),
           ],
         ),

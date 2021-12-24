@@ -91,6 +91,7 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
                     ),
                   ),
                   ListView.builder(
+                    reverse: true,
                     physics: ClampingScrollPhysics(),
                     padding: EdgeInsets.zero,
                     scrollDirection: Axis.vertical,

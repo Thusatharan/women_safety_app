@@ -23,7 +23,7 @@ class _MapLargeScreenState extends State<MapLargeScreen> {
         children: [
           GoogleMap(
             mapToolbarEnabled: true,
-            mapType: MapType.normal,
+            mapType: MapType.satellite,
             markers: Set.from(allMarkers),
             onMapCreated: (GoogleMapController controller) {
               // add marker

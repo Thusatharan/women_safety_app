@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
           // Notice that the counter didn't reset back to zero; the application
           // is not restarted.
         ),
-        initialRoute: '/5',
+        initialRoute: '/4',
         routes: {
           '/1': (context) => const AdminScreen(),
           '/2': (context) => AdminDashboardScreen(),
